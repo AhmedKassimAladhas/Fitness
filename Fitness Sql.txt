@@ -1,0 +1,138 @@
+Create Table Employees(
+	id int primary key,
+	Name Varchar(50),
+	Job Varchar(50),
+	Phone Varchar(11),
+	Salary Double
+);
+
+Create Table Users(
+	id int primary key,
+	Username Varchar(50),
+	Password Varchar(50),
+	Grants Varchar(11),
+	E_id int, 
+	foreign key (E_id) references Employees(id)
+);
+
+Create Table Customers(
+	id int primary key,
+	Name Varchar(50),
+	Phone Varchar(11),
+	Phone2 Varchar(11),
+	Address Varchar(100),
+	Gender Varchar(10)
+);
+
+Create Table Body_measurements(
+	id int primary key,
+	Today_date Varchar(100),
+	Age int(11),
+	Hight Double,
+	Weight Double,
+	Fats Double,
+	Muscles Double,
+	Calories Double,
+	C_id int,
+	foreign key (C_id) references Customers(id)
+);
+
+Create Table Products(
+	id int primary key,
+	date_entry Varchar(100),
+	Name_Prod Varchar(100),
+	Price Double,
+	Count int(50),
+	Notes Varchar(200)
+);
+
+Create Table Sections(
+	id int primary key,
+	Sec_name Varchar(100),
+	Sec_Details Varchar(200),
+	Price Double,
+	offer Varchar(10),
+	offer_price Double	
+);
+
+Create Table Offers(
+	id int primary key,
+	Offer_name Varchar(100),
+	Offer_Details Varchar(200),
+	Offer_Price Double,
+	Date_Start Varchar(100),
+	Date_End Varchar(100),
+	Sec int,
+	foreign key (Sec) references Sections(id),
+	Notes Varchar(200)
+);
+
+Create Table Dates(
+	id int primary key,
+	Number int,
+	day Varchar(50),
+	time_start Varchar(50),
+	time_end Varchar(50),
+	Notes Varchar(200)
+);
+
+Create Table New_Subscriptions(
+	id int primary key,
+	Cust_id int,
+	foreign key (Cust_id) references Customers(id),
+	Subscrip_Number int,
+	type Varchar(50),
+	date_start Varchar(100),
+	date_end Varchar(100),
+	count int,
+	Sec int,
+	foreign key (Sec) references Sections(id)
+);
+
+Create Table Expenses(
+	id int primary key,
+	date_entry Varchar(100),
+	Ex_name Varchar(100),
+	emp Varchar(50),
+	price Double,
+	Notes Varchar(200)
+);
+
+Create Table Sell(
+	id int primary key,
+	date_sell Varchar(100),
+	emp Varchar(50),
+	Prod int,
+	foreign key (Prod) references Products(id),
+	price Double,
+	Discount Double,
+	Total Double,
+	Notes Varchar(200)
+);
+
+Create Table Accounts(
+	id int primary key,
+	Emp Varchar(50),
+	Date_today Varchar(100),
+	Subscrip Double,
+	Prod Double,
+	Expense Double,
+	Total Double,
+	Notes Varchar(200)
+);
+
+Create Table Today_trainings(
+	id int primary key,
+	date Date ,
+	subscrip Varchar(50),
+	numberSub int,
+	name Varchar(50),
+	phone Varchar(20),
+	countTrining int,
+	countDone int, 
+	price Double,
+	cust_cid int,
+	foreign key (cust_cid) references Customers(cid),
+	
+);
+
